@@ -14,7 +14,8 @@ defmodule HydraQl.Application do
       # Start the PubSub system
       {Phoenix.PubSub, name: HydraQl.PubSub},
       # Start the Endpoint (http/https)
-      HydraQlWeb.Endpoint
+      HydraQlWeb.Endpoint,
+      {HydraQl.Pickings.Workres.CosumeProductsFromKafka, []}
       # Start a worker by calling: HydraQl.Worker.start_link(arg)
       # {HydraQl.Worker, arg}
     ]
