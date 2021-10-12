@@ -9,7 +9,7 @@ defmodule HydraQlWeb.Router do
   #   pipe_through :api
   # end
 
-  scope "/api" do
+  scope "/" do
     forward "/graphql", Absinthe.Plug, schema: HydraQlGraphql.Schema, json_code: Jason
   end
 end
