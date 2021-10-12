@@ -10,7 +10,14 @@ defmodule HydraQl.MixProject do
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
-      deps: deps()
+      deps: deps(),
+      test_coverage: [tool: ExCoveralls],
+      preferred_cli_env: [
+        coveralls: :test,
+        "coveralls.detail": :test,
+        "coveralls.post": :test,
+        "coveralls.html": :test
+      ]
     ]
   end
 
@@ -65,7 +72,6 @@ defmodule HydraQl.MixProject do
       {:brod, "~> 3.15"},
       # consumir mensagens de algum msg broaker
       {:broadway, "~> 1.0"},
-      # 
       {:broadway_kafka, "~> 0.3.0"}
     ]
   end

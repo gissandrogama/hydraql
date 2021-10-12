@@ -16,6 +16,7 @@ defmodule HydraQlWeb.ChannelCase do
   """
 
   use ExUnit.CaseTemplate
+  alias Ecto.Adapters.SQL.Sandbox
 
   using do
     quote do
@@ -29,10 +30,10 @@ defmodule HydraQlWeb.ChannelCase do
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(HydraQl.Repo)
+    :ok = Sandbox.checkout(HydraQl.Repo)
 
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(HydraQl.Repo, {:shared, self()})
+      Sandbox.mode(HydraQl.Repo, {:shared, self()})
     end
 
     :ok
