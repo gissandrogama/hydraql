@@ -6,6 +6,7 @@ defmodule HydraQl.Pickings.Core.StorePickings do
     # para cada produto: criar um evento de picking para cada store dentro do produto
     products
     |> build_payload_per_product()
+    |> insert_into_mongo
     |> IO.inspect()
   end
 
@@ -32,5 +33,14 @@ defmodule HydraQl.Pickings.Core.StorePickings do
         delivered: false
       }
     end)
+  end
+
+  defp insert_into_mongo(products) do
+    Enum.map(products, &perform_insert/1) |> IO.inspect()  
+  end
+
+  defp perform_insert(product) do
+    {:ok, response} = Mongo.insert_one(:mongo, "orders", product)
+    response
   end
 end

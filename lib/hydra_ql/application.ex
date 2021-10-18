@@ -15,8 +15,10 @@ defmodule HydraQl.Application do
       {Phoenix.PubSub, name: HydraQl.PubSub},
       # Start the Endpoint (http/https)
       HydraQlWeb.Endpoint,
+      :poolboy.child_spec(:worker, Application.get_env(:hydra_ql, :mongo_poolboy)),
       {HydraQl.Pickings.Workers.CosumeProductsFromKafka,
-       Application.get_env(:hydra_ql, :picking_consumer)}
+       Application.get_env(:hydra_ql, :picking_consumer)},
+       {Mongo, Application.get_env(:hydra_ql, :mongo_config)}
       # Start a worker by calling: HydraQl.Worker.start_link(arg)
       # {HydraQl.Worker, arg}
     ]
