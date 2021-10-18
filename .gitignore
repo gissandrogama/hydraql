@@ -28,3 +28,4 @@ hydra_ql-*.tar
 /priv/static/
 
 .elixir_ls
+.env

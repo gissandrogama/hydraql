@@ -26,7 +26,7 @@ config :logger, :console,
 
 config :hydra_ql, :mongo_config,
   name: :mongo,
-  url: "mongodb+srv://gissandrogama:Ycterror18@cluster0.ojbp3.mongodb.net/pickings",
+  url: System.get_env("mongo_url"),
   pool_size: 2
 
 # Use Jason for JSON parsing in Phoenix

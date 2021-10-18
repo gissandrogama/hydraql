@@ -7,7 +7,6 @@ defmodule HydraQl.Pickings.Core.StorePickings do
     products
     |> build_payload_per_product()
     |> insert_into_mongo
-    |> IO.inspect()
   end
 
   defp build_payload_per_product(products) do
@@ -36,7 +35,7 @@ defmodule HydraQl.Pickings.Core.StorePickings do
   end
 
   defp insert_into_mongo(products) do
-    Enum.map(products, &perform_insert/1) |> IO.inspect()  
+    Enum.map(products, &perform_insert/1)
   end
 
   defp perform_insert(product) do
